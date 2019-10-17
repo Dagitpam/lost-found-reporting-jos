@@ -26,5 +26,8 @@ class pagesController extends Controller
         );
         return view ('pages.services')->with($data);
     }
+    public function login(){
+        return view('auth.login');
+    }
 }
    ?>

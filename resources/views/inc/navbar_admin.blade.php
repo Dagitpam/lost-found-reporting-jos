@@ -13,25 +13,19 @@
                     <li class="nav-item">
                             <a class="nav-link" href="home" style="color:white">Home</a>
                           </li>
-                          <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">
-                                  Report Items
-                                </a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="/Posts/create">Report Missing Item</a>
-                                  <a class="dropdown-item" href="/Found/create">Report Found Item</a>
-                                </div>
+                          
+                          <li class="nav-item">
+                            <a class="nav-link" href="/Posts" style="color:white">View Missing Items</a>
                           </li>
-                          <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">
-                                  View Items
-                                </a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="home">View Missing Items</a>
-                                  <a class="dropdown-item" href="/Found">View Found Items</a>
-                                </div>
+
+                          <li class="nav-item">
+                            <a class="nav-link" href="/about" style="color:white">View Found Items</a>
                           </li>
                           <li class="nav-item">
+
+                          <li class="nav-item">
+                                <a class="nav-link" href="/about" style="color:white">View Claim Items</a>
+                              </li>
                             <a class="nav-link" href="/about" style="color:white">About Us</a>
                           </li>
                         

@@ -5,7 +5,7 @@
 
     @foreach ($posts as $post)
         <div class="jumbotron">
-        <h3><a href="/Posts/{{$post->id}}">{{$post->title}}</a></h3>
+        <h3><a href="/Posts/{{$post->id}}">{{$post->name}}</a></h3>
         <small>{{$post->created_at}}</small>
         </div>
         

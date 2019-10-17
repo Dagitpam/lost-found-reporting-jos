@@ -24,11 +24,10 @@
         
 
         <main class="py-4">
-            @include('inc.navbar')<br><br>
+           @include('inc.navbar_admin')<br><br>
     <div class="container">
         @include('inc.messages')
-        @include('inc.modal')
-        @yield('content')
+        @yield('content2')
         
     </div>
         </main>

@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-            <h1>Report missing item</h1>
+            <h1>Report Found item</h1>
         {{-- {!! Form::open(['action'=> 'PostsController@store', 'method' => 'POST']) !!}
          <div class="form-group">
             {{form::label('title','Title')}}
@@ -19,10 +19,8 @@
      <div class="card">
          <div class="card-header bg-danger text-white">Report</div>
          <div class="card-body">
-            <form action="/Posts" method="post" enctype="multipart/form-data">
+            <form action="/Found" method="post" enctype="multipart/form-data">
                 @csrf
-            {{-- <input type="text" value="{{Auth::user()->name}}" id="title" class="form-control">
-            <input type="text" value="{{Auth::user()->email}}" id="title" class="form-control"> --}}
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12">
@@ -56,7 +54,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="title">Item name</label>
-                        <input type="text" name="item_name" id="title" class="form-control" placeholder="e.g laptop bag">
+                        <input type="text" name="item_name" id="title" class="form-control" placeholder="e.g School Id card">
                     </div>
               
                 </div>
@@ -73,8 +71,8 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="body">Description</label>
-                        <input type="text" name="item_desc" id="title" class="form-control" placeholder="Description">
-                        {{-- <Textarea id="article-ckeditor" name="item_desc" id="body"></Textarea>        --}}
+                        <Textarea type="text" name="item_desc" id="title" class="form-control" placeholder="Description"> </Textarea>
+                         {{-- <Textarea id="article-ckeditor" name="item_desc" id="body"></Textarea>         --}}
                    </div>
                 </div>
             </div>

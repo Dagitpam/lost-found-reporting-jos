@@ -16,8 +16,16 @@
 Route::get('/about', function () {
     return view('pages.about');
 });*/ 
-Route::get('/', 'pagesController@index');
+// Route::get('/', 'pagesController@index');
+Route::get('/', 'pagesController@login');
 Route::get('/about', 'pagesController@about');
 Route::get('/services', 'pagesController@services');
 
 Route::resource('Posts', 'PostsController');
+Route::resource('Found', 'ReportFoundItemController');
+Route::resource('ClaimF', 'ClaimFoundItemController');
+Route::POST('tSelect', 'ClaimFoundItemController@transferSelect');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
