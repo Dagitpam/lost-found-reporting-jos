@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                 @if (count($user_list) > 0)
+                <div class="table-responsive">
                 <table class="table table-info table-hover table-stripped">
                         <thead>
                             <th>Id</th>
@@ -22,7 +23,13 @@
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td><button type="submit" class="btn btn-info btn-sm">Edit</button>&nbsp;<button type="submit" class="btn btn-danger btn-sm">delete</button></td>
+                        <td><button type="submit" class="btn btn-info btn-sm" onclick="transfer({{$user->id}})" data-toggle="modal" data-target="#myModal2">Edit</button>&nbsp;
+                        <form action="/destroy/{{$user->id}}" method="post">
+                            @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">delete</button>
+                        </form>
+                        </td>   
                     
                         </tbody>
     
@@ -33,7 +40,8 @@
                         <th>Email</th>
                         <th>Action</th>
                     </tfoot>
-                </table>  
+                </table> 
+            </div> 
                 @endif
                 </div>
                 {{$user_list->links()}}
@@ -42,8 +50,42 @@
     </div>
     
 </div>
+<!-- User update modal -->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header bg-danger text-white">
+          <h4 class="modal-title">Update User</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+                @include('inc.messages')
+          <form action="/destroy/{{$user->id}}" method="post"> 
+            @csrf
+              <div class="form-group">
+                  <label for="name ">User Name</label>
+                  <input type="text" id="user_name2" name="name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="user_email" name="email" class="form-control">
+            </div>
+            <!-- Modal footer -->
+           <div class="modal-footer">
+             @method('PUT')
+            <button type="Submit" class="btn btn-danger">Update</button>
+           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {{-- Passing item_name and item-desc to modal form as hidden value --}}
-{{-- <script>
+ <script>
 
     function transfer(a){
         var a;
@@ -53,14 +95,14 @@
             }
         });
             $.ajax({
-                url:"/tSelect",
+                url:"/editUser",
                 method: "POST",
                 cache: false,
                 data: {id: a},
                 success: function(result){
                     // alert(result.msg);
-                    document.getElementById('item_name2').value = result.item_name;
-                    document.getElementById('item_desc2').value = result.item_desc;
+                    document.getElementById('user_name2').value = result.name;
+                    document.getElementById('user_email').value = result.email;
                 },
                 error:function(){
                     alert('fuck');
@@ -81,5 +123,5 @@
         //     itemName.value = itemName_final.value;
         //     itemDesc.value = itemDesc_final.value;
         // }
-    </script> --}}
+    </script> 
 @endsection

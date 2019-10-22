@@ -25,7 +25,12 @@ Route::resource('Posts', 'PostsController');
 Route::resource('Found', 'ReportFoundItemController');
 Route::resource('ClaimF', 'ClaimFoundItemController');
 Route::POST('tSelect', 'ClaimFoundItemController@transferSelect');
+Route::POST('tSelect', 'ClaimFoundItemController@transferSelect');
+Route::POST('tToggle','PostsController@transferToggle');
+Route::POST('tToggle1','ReportFoundItemController@transferToggle');
+Route::POST('editUser','HomeController@selectUser');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/destroy', 'HomeController');

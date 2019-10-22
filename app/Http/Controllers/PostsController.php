@@ -39,7 +39,7 @@ class PostsController extends Controller
 
         } else {
 
-            $posts = ReportMisingItems::orderBy('name','desc')->paginate(5);
+            $posts = ReportMisingItems::where('status','1')->orderBy('name','desc')->paginate(5);
             //To select a particular field with where
             //$posts = Post::where('title','Title two')->get();
         
@@ -181,6 +181,25 @@ class PostsController extends Controller
         //
         $post = ReportMisingItems::find($id);
         $post->delete();
-        return redirect('/Posts')->with('success','Post Removed');
+        return redirect('/Posts')->with('success','Report Removed successfully');
+    }
+    public function transferToggle(Request $request){
+
+        $id = $request->input('id');
+        $row = ReportMisingItems::find($id);
+        if($row == "1")
+        {
+
+        }
+        else{
+
+        $row->status = "1";
+        $row->save();
+
+        $msg = $row;
+
+        return response()->json(['msg'=>$msg], 200);
+        }
+
     }
 }

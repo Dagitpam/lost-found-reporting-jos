@@ -27,6 +27,7 @@
            @include('inc.navbar_admin')<br><br>
     <div class="container">
         @include('inc.messages')
+        @include('inc.modal')
         @yield('content2')
         
     </div>

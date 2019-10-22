@@ -19,12 +19,12 @@
                           </li>
 
                           <li class="nav-item">
-                            <a class="nav-link" href="/about" style="color:white">View Found Items</a>
+                            <a class="nav-link" href="/Found" style="color:white">View Found Items</a>
                           </li>
                           <li class="nav-item">
 
                           <li class="nav-item">
-                                <a class="nav-link" href="/about" style="color:white">View Claim Items</a>
+                                <a class="nav-link" href="/ClaimF" style="color:white">View Claim Items</a>
                               </li>
                             <a class="nav-link" href="/about" style="color:white">About Us</a>
                           </li>

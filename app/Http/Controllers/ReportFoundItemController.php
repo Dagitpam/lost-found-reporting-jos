@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\AUTH;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 Use App\ReportFoundItems;
 
@@ -17,11 +17,20 @@ class ReportFoundItemController extends Controller
     public function index()
     {
         //
-        $posts = ReportFoundItems::orderBy('created_at','desc')->paginate(5);
-        //To select a particular field with where
-        //$posts = Post::where('title','Title two')->get();
-    
-        return view('posts.view_found_items')->with('posts',$posts);
+        if(Auth::user()->email == 'admin@gmail.com'){
+
+            $found_items = ReportFoundItems::orderBy('created_at','desc')->paginate(5);
+            return view('posts.admin_found_items')->with('found_items',$found_items);
+
+        }
+        else{
+            $posts = ReportFoundItems::where('status','1')->orderBy('created_at','desc')->paginate(5);
+            //To select a particular field with where
+            //$posts = Post::where('title','Title two')->get();
+        
+            return view('posts.view_found_items')->with('posts',$posts);  
+        }
+        
         
     }
 
@@ -128,5 +137,27 @@ class ReportFoundItemController extends Controller
     public function destroy($id)
     {
         //
+        $found_item = ReportFoundItems::find($id);
+        $found_item->delete();
+        return redirect('/Found')->with('success','Report deleted Removed');
+    }
+    public function transferToggle(Request $request){
+
+        $id = $request->input('id');
+        $row = ReportFoundItems::find($id);
+        if($row == "1")
+        {
+
+        }
+        else{
+
+        $row->status = "1";
+        $row->save();
+
+        $msg = $row;
+
+        return response()->json(['msg'=>$msg], 200);
+        }
+
     }
 }

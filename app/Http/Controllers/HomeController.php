@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         if (Auth::user()->email=='admin@gmail.com') {
 
-            $user_list = User::orderBy('created_at','desc')->paginate(3);
+            $user_list = User::orderBy('created_at','desc')->paginate(5);
             return view('admin_home')->with('user_list',$user_list);
 
         } else {
@@ -41,5 +41,41 @@ class HomeController extends Controller
         }
         
         
+    }
+    public function destroy($id)
+    {
+        $post = User::find($id);
+        $post->delete();
+        return redirect('/destroy')->with('success','User deleted successfully'); 
+    }
+    public function selectUser(Request $request){
+
+        $id = $request->input('id');
+        $user = User::find($id);
+
+        $name =$user->name;
+        $email=$user->email;
+
+        $results = array(
+            'name' => $name,
+            'email' =>$email,
+            'error'=>'error'
+        );
+        $msg = $name;
+
+        return response()->json($results, 200);
+    }
+    public function update(Request $request, $id)
+    {
+        $this->validate($request,
+        [
+            'name' => 'required',
+            'email'=>'required'
+        ],['name.required'=>'Name field is required','email.required'=>'Email field is required']);
+        $update = User::find($id);
+        $update-> name = $request->input('name');
+        $update-> email = $request->input('email');
+        $update-> save();
+        return redirect('/destroy')->with('success','User Updated successfully!');
     }
 }

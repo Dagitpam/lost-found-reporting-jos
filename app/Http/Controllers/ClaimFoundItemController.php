@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\AUTH;
+use Illuminate\Support\Facades\Auth;
 use App\ClaimFoundItem;
 use App\ReportFoundItems;
+use App\User;
 
 class ClaimFoundItemController extends Controller
 {
@@ -17,6 +18,12 @@ class ClaimFoundItemController extends Controller
     public function index()
     {
         //
+        
+        if(Auth::user()->email == 'admin@gmail.com'){
+            $claims = ClaimFoundItem::orderBy('created_at','desc')->paginate(5);
+            return view('posts.admin_view_claim')->with('claims',$claims);
+
+        }
     }
 
     /**
@@ -96,6 +103,9 @@ class ClaimFoundItemController extends Controller
     public function destroy($id)
     {
         //
+        $delete = ClaimFoundItem::find($id);
+        $delete-> delete();
+        return redirect('ClaimF')->with('success','Claim ite,m has been removed successfully');
     }
     public function transferSelect(Request $request){
 

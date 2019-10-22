@@ -45,6 +45,7 @@
 </div>
 {{-- Passing item_name and item-desc to modal form as hidden value --}}
 <script>
+    
 
     function transfer(a){
         var a;

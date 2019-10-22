@@ -8,8 +8,8 @@
                  <div class="card-header bg-danger text-white">List of Users</div> 
 
                 <div class="card-body"> --}}
-                    <h3>View and Approve Missing Items</h3>
-                @if (count($missing_items) > 0)
+                    <h3>View and Approve Reported Found Items</h3>
+                @if (count($found_items) > 0)
                 <div class="table-responsive">
                 <table class="table table-info table-hover table-stripped table-bordered">
                         <thead>
@@ -24,23 +24,23 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                    @foreach ($missing_items as $missing_item)
+                    @foreach ($found_items as $found_item)
                         
                 
-                        <td>{{$missing_item->name}}</td>
-                        <td>{{$missing_item->email}}</td>
-                        <td>{{$missing_item->phone_number}}</td>
-                        <td>{{$missing_item->address}}</td>
-                        <td>{{$missing_item->category}}</td>
-                        <td>{{$missing_item->item_name}}</td>
-                        <td>{{$missing_item->item_desc}}</td>
-                        @if ($missing_item->status == "0")
+                        <td>{{$found_item->name}}</td>
+                        <td>{{$found_item->email}}</td>
+                        <td>{{$found_item->phone_number}}</td>
+                        <td>{{$found_item->Address}}</td>
+                        <td>{{$found_item->category}}</td>
+                        <td>{{$found_item->item_name}}</td>
+                        <td>{{$found_item->item_desc}}</td>
+                        @if ($found_item->status == "0")
                         <td class="text-danger" id="pending">Pending</td>
                         @else
-                        <td>Completed</td>
+                        <td class="text-success">Completed</td>
                         @endif
-                        <td><button type="button" class="btn btn-info btn-sm text-white" onclick="toggle('{{$missing_item->id}}')">Approve</button>&nbsp;
-                        <form action="/Posts/{{$missing_item->id}}" method="post">
+                        <td><button type="button" class="btn btn-info btn-sm" onclick="toggle1('{{$found_item->id}}')">Approve</button>&nbsp;
+                        <form action="/Found/{{$found_item->id}}" method="post">
                             @csrf
                                @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
@@ -65,14 +65,14 @@
                 </div> 
                 @endif
                 {{-- </div> --}}
-                {{$missing_items->links()}}
+                {{$found_items->links()}}
             {{-- </div>
         </div>
     </div> --}}
     <script>
     
 
-            function toggle(a){
+            function toggle1(a){
                 var a;
                 $.ajaxSetup({
                     headers: {
@@ -80,13 +80,13 @@
                     }
                 });
                     $.ajax({
-                        url:"/tToggle",
+                        url:"/tToggle1",
                         method: "POST",
                         cache: false,
                         data: {id: a},
                         success: function(result){
                             // alert(result.msg);
-                         document.getElementById('pending').innerHTML = "Completed";
+                         document.getElementById('pending').innerHTML = "Confirming...";
                             // document.getElementById('item_desc2').value = result.item_desc;
                         },
                         error:function(){
