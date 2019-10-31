@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto" style="color:white">
                     <li class="nav-item">
-                            <a class="nav-link" href="home" style="color:white">Home</a>
+                            <a class="nav-link" href="/home" style="color:white">Home</a>
                           </li>
                           <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">
@@ -27,7 +27,7 @@
                                   View Items
                                 </a>
                                 <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="home">View Missing Items</a>
+                                  <a class="dropdown-item" href="/home">View Missing Items</a>
                                   <a class="dropdown-item" href="/Found">View Found Items</a>
                                 </div>
                           </li>
@@ -36,7 +36,7 @@
                           </li>
                         
                           <li class="nav-item">
-                            <a class="nav-link" href="/Posts" style="color:white">Contact Us</a>
+                            <a class="nav-link" href="/contact" style="color:white">Contact Us</a>
                           </li>  
             </ul>
 

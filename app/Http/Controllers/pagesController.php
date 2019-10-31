@@ -16,6 +16,10 @@ class pagesController extends Controller
         //Another method of passing title
         $title = 'About Us';
         return view('pages.about')->with('title',$title);
+        
+    }
+    public function contact(){
+        return view('pages.contact');
     }
     public function services(){
         //passing multiple title 

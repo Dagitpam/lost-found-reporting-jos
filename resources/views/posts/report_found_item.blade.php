@@ -64,6 +64,7 @@
                     <div class="form-group">
                         <label for="title">Upload image</label>
                         <input type="file" name="item_image" id="title" class="form-control">
+                        <small class="form-text  text-danger">Image most be equals to or less than 2mb </small>
                     </div>
                 </div>
             </div>

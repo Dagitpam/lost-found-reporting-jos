@@ -64,8 +64,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="title">Upload image</label>
+                        <label for="title">Upload image <small class="text-muted">(Optional)</small></label>
                         <input type="file" name="item_image" id="title" class="form-control">
+                        <small class="form-text  text-danger">Image most be equals to or less than 2mb </small>
                     </div>
                 </div>
             </div>

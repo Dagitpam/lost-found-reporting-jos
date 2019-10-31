@@ -105,7 +105,7 @@ class ClaimFoundItemController extends Controller
         //
         $delete = ClaimFoundItem::find($id);
         $delete-> delete();
-        return redirect('ClaimF')->with('success','Claim ite,m has been removed successfully');
+        return redirect('ClaimF')->with('success','Claim item has been removed successfully');
     }
     public function transferSelect(Request $request){
 

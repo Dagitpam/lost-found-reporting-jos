@@ -20,6 +20,7 @@ Route::get('/about', function () {
 Route::get('/', 'pagesController@login');
 Route::get('/about', 'pagesController@about');
 Route::get('/services', 'pagesController@services');
+Route::get('/contact', 'pagesController@contact');
 
 Route::resource('Posts', 'PostsController');
 Route::resource('Found', 'ReportFoundItemController');
