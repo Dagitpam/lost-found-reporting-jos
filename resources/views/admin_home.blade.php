@@ -100,7 +100,7 @@
                 cache: false,
                 data: {id: a},
                 success: function(result){
-                    // alert(result.msg);
+                     alert(result.msg);
                     document.getElementById('user_name2').value = result.name;
                     document.getElementById('user_email').value = result.email;
                 },
